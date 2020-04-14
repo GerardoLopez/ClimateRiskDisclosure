@@ -8,7 +8,7 @@ import numpy.ma as ma
 import datetime
 
 variable = 'u_component_of_wind_10m'
-fname = f'../ERA5/Europe/{variable}/{variable}.tif'
+fname = f'../ERA5/Mexico/{variable}/{variable}.tif'
 d = gdal.Open(fname)
 u = d.ReadAsArray()
 u = ma.masked_invalid(u)
@@ -16,7 +16,7 @@ u = np.where(u > 11.4, 1.0, u)
 u = np.where(u < -11.4, -1.0, u)
 
 variable = 'v_component_of_wind_10m'
-fname = f'../ERA5/Europe/{variable}/{variable}.tif'
+fname = f'../ERA5/Mexico/{variable}/{variable}.tif'
 d = gdal.Open(fname)
 v = d.ReadAsArray()
 v = ma.masked_invalid(v)
@@ -98,7 +98,7 @@ rows, cols = wp_mean.shape
 # Get GDAL datatype from NumPy datatype
 dtype = gdal_array.NumericTypeCodeToGDALTypeCode(wp.dtype)
 # Create dataset
-datadir = '/home/glopez/Projects/ClimateRiskDisclosure/ERA5/Europe/wind_power'
+datadir = '/home/glopez/Projects/conabio/ClimateRiskDisclosure/ERA5/Mexico/wind_power'
 fname = os.path.join(datadir, f'mean_wind_power.tif')
 dst_ds = driver.Create(fname, cols, rows, 1, dtype, driver_options)
 # Set cartographic projection
@@ -112,7 +112,6 @@ rows, cols = wp_std.shape
 # Get GDAL datatype from NumPy datatype
 dtype = gdal_array.NumericTypeCodeToGDALTypeCode(wp_std.dtype)
 # Create dataset
-datadir = '/home/glopez/Projects/ClimateRiskDisclosure/ERA5/Europe/wind_power'
 fname = os.path.join(datadir, f'std_wind_power.tif')
 dst_ds = driver.Create(fname, cols, rows, 1, dtype, driver_options)
 # Set cartographic projection

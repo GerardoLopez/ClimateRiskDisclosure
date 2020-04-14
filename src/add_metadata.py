@@ -9,8 +9,7 @@ import datetime
 
 variable = sys.argv[1]
 
-#fname = f'../ERA5/Europe/{variable}/Europe_monthly_mean_{variable}_1979_2019.tif'
-fname = f'../ERA5/Europe/{variable}/Europe_monthly_mean_{variable}_2002_2019.tif'
+fname = f'../ERA5/Mexico/{variable}/Mexico_monthly_mean_{variable}_1979_2019.tif'
 d = gdal.Open(fname)
 data = d.ReadAsArray()
 
@@ -43,10 +42,8 @@ dst_ds.SetProjection(proj)
 dst_ds.SetGeoTransform(gt)
 
 # Dates
-#startyear = 1979                                                                                              
-#startmonth = 1
-startyear = 2002                                                                                              
-startmonth = 7
+startyear = 1979                                                                                              
+startmonth = 1
 
 endyear = 2019                                                                                               
 endmonth = 12
